@@ -1,0 +1,32 @@
+---
+title: "Slides"
+format: html
+editor: visual
+---
+
+
+library(tidyverse)
+
+
+## Volunteering
+
+### how many people in Ukraine become volunteers since 24.02
+
+``` {r}
+
+
+
+```
+
+### how many of them lost their jobs
+### how many of them came back to work cos out of money
+### how many NGO created
+### how much money donated by people of different countries to Ukraine 
+
+## Data on Ukraine
+
+### google search Ukraine
+### donations to Ukraine in usd
+### humanitarian help in tonnes
+### military support in vehicles
+### investments in Ukraine (USD)
