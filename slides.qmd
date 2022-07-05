@@ -1,41 +1,98 @@
 ---
-title: "Slides"
-format: html
-editor: visual
+title: "nÜkraine slides"
+format: revealjs
+editor: source
 ---
 
+``` {r, warning=FALSE}
 
 library(tidyverse)
+library(dplyr)
 library(haven)
 library(RColorBrewer)
 
+```
 
-## Volunteering
-
-### how many people in Ukraine become volunteers since 24.02
-
-``` {r}
+``` {r, warning=FALSE}
 
 dif <- as.data.frame(read.csv("OXF.csv", sep = ";"))
 survey <- data.frame(job=as.factor(dif$V29), volunteer=as.factor(dif$V34))
-
-  
-ggplot(survey, aes(x=volunteer)) +
-  geom_bar(aes(fill=job)) +
-   scale_fill_brewer(palette="Pastel1")
-  
+survey2 <- survey %>% 
+  group_by(volunteer, job) %>% 
+  summarise(count = n()) %>% 
+  mutate(perc = count/sum(count))
 
 ```
 
-### how many of them lost their jobs
-### how many of them came back to work cos out of money
-### how many NGO created
-### how much money donated by people of different countries to Ukraine 
+# Volunteering in the times of war: what data can tell us
 
-## Data on Ukraine
+# How many people in Ukraine become volunteers since 24.02
 
-### google search Ukraine
-### donations to Ukraine in usd
-### humanitarian help in tonnes
-### military support in vehicles
-### investments in Ukraine (USD)
+``` {r, warning=FALSE}
+
+ggplot(survey2, aes(volunteer)) + 
+  geom_bar(aes(y = (..count..)/sum(..count..)), fill = "#FDDB52") + 
+  scale_y_continuous(labels=scales::percent) +
+  ylab("% of all respondents")
+
+```
+ TEXT around 70% became volunteers
+
+
+# How many volunteers lost their jobs
+
+``` {r, warning=FALSE}
+
+ggplot(survey2, aes(x=volunteer, y = perc*100)) +
+  geom_bar(aes(fill=job), stat="identity", width = 0.7) +
+  labs(x = "Volunteering", y = "% of volunteers", fill = "Financial situation") +
+  scale_fill_brewer(palette="Pastel1")
+
+```
+
+Among volunteers, x% lost their jobs
+
+# How many volunteers came back to work beacuse they were out of money
+
+No info
+
+# How many NGO were created
+
+Prior to the Russian invasion of Ukraine there [were](https://www.humanitarianoutcomes.org/sites/default/files/publications/ukraine_review_2022.pdf) about **150 active national NGOs** involved in humanitarian aid. 
+
+Three months after February 24, approximately **2400 new groups** [were registered](https://business.diia.gov.ua/cases/novini/ukrainskij-biznes-v-umovah-vijni-analitika-stanu-za-3-misaci) as "charitable foundations or public organisations".
+
+### How much money were donated by people of different countries to Ukraine 
+
+Since February 24, 992 grants worth $1,228,860,746 [were donated](https://topics.candid.org/issue-pages/ukraine/#tab-nav) to Ukraine. 
+
+# Data on Ukraine
+
+# Google search Ukraine
+
+``` {r, warning=FALSE}
+
+gig <- as.data.frame(read.csv("google.csv", sep = ";"))
+google <- data.frame(Search_Ukraine=as.numeric(as.character(gig$Search_Ukraine)), Week=as.Date(gig$Week))
+
+ggplot(google, aes(Week, Search_Ukraine)) +
+  geom_area(fill="#dea5a4")
+
+```
+
+# Donations to Ukraine in usd
+
+
+
+
+# Humanitarian help in tonnes
+
+
+
+# Military support in vehicles
+
+
+
+# Investments in Ukraine (USD)
+
+
