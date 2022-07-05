@@ -16,7 +16,11 @@ library(RColorBrewer)
 ``` {r, warning=FALSE}
 
 dif <- as.data.frame(read.csv("OXF.csv", sep = ";"))
-survey <- data.frame(job=as.factor(dif$V29), volunteer=as.factor(dif$V34))
+dif %>% filter(dif$V34new > 0) -> dif
+dif %>% filter(dif$V34new <= 7) -> dif
+
+
+survey <- data.frame(job=as.factor(dif$V29), volunteer=as.factor(dif$V34new))
 survey2 <- survey %>% 
   group_by(volunteer, job) %>% 
   summarise(count = n()) %>% 
