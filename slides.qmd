@@ -36,7 +36,9 @@ survey <- data.frame(job=as.factor(dif$V29), volunteer=as.factor(dif$V34new))
 
 - They helped either physically or financially or both.
 
-- Around 15% of people said they **would** help. Only 25% of people said they had not helped and would not do so.
+- Around 15% of people said they **would** help.
+
+- Only 25% of people said they had not helped and would not do so.
 
 ------------------------------------------------------------------------
 
@@ -61,9 +63,9 @@ ggplot(survey, aes(volunteer)) +
 
 - Around a half of those who volunteered did not lose their jobs. 
 
-- Up to 10% of volunteers said they lost their jobs. 
+- Up to 12% of volunteers said they lost their jobs. 
 
-- Another 10% of them did not lose their jobs because they did not have ones.
+- Another 17% of them did not lose their jobs because they did not have ones.
 ---
 
 ### How many volunteers lost their jobs

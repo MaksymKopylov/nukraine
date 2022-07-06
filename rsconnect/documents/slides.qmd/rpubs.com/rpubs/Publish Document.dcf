@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/921460/e404bf64fc7f487392eddb9c2e951f23
+bundleId: https://api.rpubs.com/api/v1/document/921460/e404bf64fc7f487392eddb9c2e951f23
+url: http://rpubs.com/MaksymKopylov/921460
+when: 1657110462.01136
+lastSyncTime: 1657110462.01137
